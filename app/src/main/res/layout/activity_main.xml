@@ -17,12 +17,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            app:viewmodel="@{viewmodel}"
             android:layout_width="0dp"
             android:layout_height="181dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
             android:scaleType="fitXY"
             app:imageUrl="@{viewmodel.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@mipmap/ic_launcher"
+            app:viewmodel="@{viewmodel}"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
             />
@@ -42,20 +39,20 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:longClickable="true"
             android:inputType="textPersonName"
             android:text="@={viewmodel.textInput}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"/>
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toLeftOf="@+id/button3"
+            android:layout_marginRight="8dp"/>
 
         <Button
             android:id="@+id/button"
@@ -77,22 +74,68 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"/>
 
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:onClick="showFragment"
+            android:text="Show Color details"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/button2">
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:onClick="clearText"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editText"/>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="73dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
+            android:layout_marginBottom="-25dp"
             android:background="@{viewmodel.overlayColor}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1">
+            tools:layout_constraintRight_creator="1"
+            android:id="@+id/frameLayout">
 
         </FrameLayout>
-
-
     </android.support.constraint.ConstraintLayout>
 </layout>

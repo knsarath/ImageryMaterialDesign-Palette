@@ -4,7 +4,6 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
@@ -24,11 +23,21 @@ public class ViewModel extends BaseObservable {
     private String imageUrl = "https://cdn.pixabay.com/photo/2015/07/06/13/58/arlberg-pass-833326_960_720.jpg";
     private String textInput;
     private int overlayColor;
-
+    private Palette palette;
 
     @Bindable
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    @Bindable
+    public Palette getPalette() {
+        return palette;
+    }
+
+    public void setPalette(Palette palette) {
+        this.palette = palette;
+        notifyPropertyChanged(BR.palette);
     }
 
     public void setImageUrl(String imageUrl) {
@@ -38,6 +47,7 @@ public class ViewModel extends BaseObservable {
 
     public void setTextInput(String textInput) {
         this.textInput = textInput;
+        notifyPropertyChanged(BR.textInput);
     }
 
     @Bindable
@@ -56,9 +66,10 @@ public class ViewModel extends BaseObservable {
                     Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
                         public void onGenerated(Palette p) {
                             // Use generated instance
-                            int mutedColor = p.getVibrantColor(ContextCompat.getColor(imageView.getContext(), R.color.colorAccent));
+                            int mutedColor = p.getLightVibrantColor(ContextCompat.getColor(imageView.getContext(), R.color.colorAccent));
                             int alphaAppliedColor = ColorUtils.setAlphaComponent(mutedColor, 160);
                             viewModel.setOverlayColor(alphaAppliedColor);
+                            viewModel.setPalette(p);
                         }
                     });
 
