@@ -20,7 +20,7 @@ import com.squareup.picasso.Target;
  */
 
 public class ViewModel extends BaseObservable {
-    private String imageUrl = "https://cdn.pixabay.com/photo/2015/07/06/13/58/arlberg-pass-833326_960_720.jpg";
+    private String imageUrl;
     private String textInput;
     private int overlayColor;
     private Palette palette;
